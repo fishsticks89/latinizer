@@ -1,0 +1,19 @@
+@import url(https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap);
+
+button {
+    height: 4pc;
+    width: 4pc;
+    background-color: rgb(0, 193, 252);
+    border-radius: 2pc;
+    color: white;
+    border: none;
+    font-size: medium;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+    margin: 1pc;
+    font-family: Roboto;
+    display: list-item;
+}
+button:focus {
+    background-color: rgb(0, 155, 202);
+    outline: none;
+}
