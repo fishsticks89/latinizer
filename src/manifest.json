@@ -6,6 +6,14 @@
     "action": {
       "default_popup": "popup.html"
     },
+    "content_scripts": [
+      {
+        "matches": ["<all_urls>"],
+        "js": [
+          "keyboardEvent.js"
+        ]
+      }
+    ],
     "background": {
       "service_worker": "background.js"
     },
@@ -14,5 +22,5 @@
       "storage",
       "scripting",
       "tabs"
-  ]
+    ]
 }
