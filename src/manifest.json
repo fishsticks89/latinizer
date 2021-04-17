@@ -3,11 +3,14 @@
     "description": "A tool for typing with macrons",
     "version": "1.0",
     "manifest_version": 3,
-    "permissions": ["storage"],
     "action": {
       "default_popup": "popup.html"
     },
     "background": {
       "service_worker": "background.js"
-    }
+    },
+    "permissions": [
+      "activeTab",
+      "storage"
+  ]
 }
