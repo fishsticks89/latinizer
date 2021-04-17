@@ -1,6 +1,6 @@
 function macronize(iden) {
     chrome.runtime.sendMessage({iden: iden});
-    // window.close();
+    setTimeout(() => { window.close(); }, 20);
 }
 
 for (let i = 0; i < char.length; i++) {

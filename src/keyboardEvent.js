@@ -1,4 +1,4 @@
-function listenAndSend() {
+export function listenAndSend() {
     chrome.runtime.onMessage.addListener(
         function(identifier) {
             
