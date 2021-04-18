@@ -1,3 +1,4 @@
+console.log("keyboardEvent.js injected");
 chrome.runtime.onMessage.addListener(
     function(identifier) {
         console.log("keystroke recieved");
