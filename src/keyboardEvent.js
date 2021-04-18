@@ -1,6 +1,7 @@
 chrome.runtime.onMessage.addListener(
     function(identifier) {
-        
+        console.log("keystroke recieved");
+        /*
         var keyboardEvent = document.createEvent('KeyboardEvent');
         var initMethod = typeof keyboardEvent.initKeyboardEvent !== 'undefined' ? 'initKeyboardEvent' : 'initKeyEvent';
         keyboardEvent[initMethod](
@@ -16,7 +17,7 @@ chrome.runtime.onMessage.addListener(
             identifier.identifier, // charCode: unsigned long - the Unicode character associated with the depressed key, else 0
         );
         document.dispatchEvent(keyboardEvent);
-        sendResponse(1);
-        return(1);
+        */
+        jQuery.event.trigger({ type : 'keypress', which : identifier.identifier });
     }
 );
