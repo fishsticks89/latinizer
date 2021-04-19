@@ -10,9 +10,18 @@
       {
         "matches": ["<all_urls>"],
         "js": [
+          "injector.js"
+        ]
+      }
+    ],
+    "web_accessible_resources": [
+      { 
+        "resources": [
+          "inject.html",
           "jQuery.js",
           "keyboardEvent.js"
-        ]
+        ],
+        "matches": ["<all_urls>"]
       }
     ],
     "background": {
