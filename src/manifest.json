@@ -15,13 +15,9 @@
       }
     ],
     "web_accessible_resources": [
-      { 
-        "resources": [
-          "inject.html",
-          "jQuery.js",
-          "keyboardEvent.js"
-        ],
-        "matches": ["<all_urls>"]
+      {
+        "resources": [ "inject.html" ],
+        "matches": [ "<all_urls>" ]
       }
     ],
     "background": {
