@@ -2,8 +2,8 @@
     "name": "Latinizer",
     "description": "A tool for typing with macrons",
     "version": "1.0",
-    "manifest_version": 3,
-    "action": {
+    "manifest_version": 2,
+    "page_action": {
       "default_popup": "popup.html"
     },
     "content_scripts": [
@@ -15,10 +15,7 @@
       }
     ],
     "web_accessible_resources": [
-      {
-        "resources": [ "inject.html" ],
-        "matches": [ "<all_urls>" ]
-      }
+      "inject.html"
     ],
     "background": {
       "service_worker": "background.js"
@@ -26,7 +23,6 @@
     "permissions": [
       "activeTab",
       "storage",
-      "scripting",
       "tabs"
     ]
 }
