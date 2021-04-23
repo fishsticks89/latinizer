@@ -4,5 +4,5 @@ function macronize(char, code) {
 }
 
 for (let i = 0; i < char.length; i++) {
-  document.getElementById(id[i]).addEventListener("click", () => macronize(char[i], code[i]));
+  document.getElementById(code[i]).addEventListener("click", () => macronize(char[i], code[i]));
 }
