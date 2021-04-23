@@ -22,15 +22,9 @@ function sendstroke(unicode, charcode) {
 
     //try2
     // for docs:
-    const input = document.querySelector(".docs-texteventtarget-iframe").contentDocument.activeElement;
-    
-    //Insert the character in the document and trigger the save API call
-    const eventObj = document.createEvent("Event");
-    eventObj.initEvent("keypress", true, true);
-    eventObj.keyCode = 105;
-    input.dispatchEvent(eventObj);
-
-    document.activeElement.value = document.activeElement.value + "а";
+    console.log("const input = document.querySelector(\".docs-texteventtarget-iframe\").contentDocument.activeElement;\nconst eventObj = document.createEvent(\"Event\");\neventObj.initEvent(\"keypress\", true, true);\neventObj.keyCode = 105;\ninput.dispatchEvent(eventObj);\ndocument.activeElement.value = document.activeElement.value + \"а\";");
+    var charcodeParsed = parseInt(String(charcode).substring(2));
+    document.activeElement.value = document.activeElement.value + String.fromCharCode(charcodeParsed);
 }
 
 chrome.runtime.onMessage.addListener(
