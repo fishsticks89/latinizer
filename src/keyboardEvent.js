@@ -24,8 +24,20 @@ function sendstroke(code) {
     
     //try2
     // for docs:
-    console.log("const input = document.querySelector(\".docs-texteventtarget-iframe\").contentDocument.activeElement;\nconst eventObj = document.createEvent(\"Event\");\neventObj.initEvent(\"keypress\", true, true);\neventObj.keyCode = 105;\ninput.dispatchEvent(eventObj);\ndocument.activeElement.value = document.activeElement.value + \"а\";");
-
+    console.log("const input = document.querySelector(\".docs-texteventtarget-iframe\").contentDocument.activeElement;\nconst eventObj = document.createEvent(\"Event\");\neventObj.initEvent(\"keypress\", true, true);\neventObj.keyCode = " + code + ";\ninput.dispatchEvent(eventObj);");
+    
+    //try3
+    // for docs:
+    function runa(code) {
+        code();
+    }
+    runa(() => {
+        const input = document.querySelector(".docs-texteventtarget-iframe").contentDocument.activeElement;
+        const eventObj = document.createEvent("Event");
+        eventObj.initEvent("keypress", true, true);
+        eventObj.keyCode = code;
+        input.dispatchEvent(eventObj);
+    });
     // for plain field:
     var charcodeParsed = parseInt(String(code));
     document.activeElement.value = document.activeElement.value + String.fromCharCode(charcodeParsed);
