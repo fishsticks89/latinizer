@@ -1,4 +1,5 @@
-console.log("keyboardEvent.js injected");
+// for testing:
+// console.log("keyboardEvent.js injected");
 
 function sendstroke(code) {
 
