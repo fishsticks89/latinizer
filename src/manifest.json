@@ -12,10 +12,6 @@
         "js": [
           "keyboardEvent.js"
         ]
-      },
-      {
-        "matches": ["http://docs.google.com/*"],
-        "js": ["docsOnly.js"]
       }
     ],
     "background": {

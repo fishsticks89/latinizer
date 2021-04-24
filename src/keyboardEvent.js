@@ -25,12 +25,31 @@ function sendstroke(code) {
     
     //try2
     // for docs:
-    console.log("const input = document.querySelector(\".docs-texteventtarget-iframe\").contentDocument.activeElement;\nconst eventObj = document.createEvent(\"Event\");\neventObj.initEvent(\"keypress\", true, true);\neventObj.keyCode = " + code + ";\ninput.dispatchEvent(eventObj);");
+    // console.log("const input = document.querySelector(\".docs-texteventtarget-iframe\").contentDocument.activeElement;\nconst eventObj = document.createEvent(\"Event\");\neventObj.initEvent(\"keypress\", true, true);\neventObj.keyCode = " + code + ";\ninput.dispatchEvent(eventObj);");
     
     //try3
+
     // for plain field:
     var charcodeParsed = parseInt(String(code));
     document.activeElement.value = document.activeElement.value + String.fromCharCode(charcodeParsed);
+    
+    // for docs:
+    if (document.URL.includes("https://docs.google.com")) {
+        console.log("docing");
+
+        // for docs
+        function runa(code) {
+            code();
+        }
+
+        runa(() => {
+            const input = document.querySelector(".docs-texteventtarget-iframe").contentDocument.activeElement;
+            const eventObj = document.createEvent("Event");
+            eventObj.initEvent("keypress", true, true);
+            eventObj.keyCode = charcodeParsed;
+            input.dispatchEvent(eventObj);
+        });
+    }
 }
 
 chrome.runtime.onMessage.addListener(
