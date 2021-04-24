@@ -1,6 +1,6 @@
 navbar :
 
-macronizer - dictionary - noun endings
+macronizer - dictionary - noun endings - feedback
 
 macronizer:
 
@@ -31,3 +31,10 @@ Tip: use Alt+m to open the macronizer, and use tab to navigate, and enter to sen
 Tip: don't like the Alt+m hotkey? click here{chrome://extensions/shortcuts} to disable it
 
 buy me a coffee {donate link}
+
+Feedback:
+
+include active site adress checkbox
+descripe issue feild
+send feedback button
+tip: something not working? Update Chrome {chrome://settings/help}

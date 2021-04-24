@@ -28,17 +28,6 @@ function sendstroke(code) {
     console.log("const input = document.querySelector(\".docs-texteventtarget-iframe\").contentDocument.activeElement;\nconst eventObj = document.createEvent(\"Event\");\neventObj.initEvent(\"keypress\", true, true);\neventObj.keyCode = " + code + ";\ninput.dispatchEvent(eventObj);");
     
     //try3
-    // for docs:
-    function runa(code) {
-        code();
-    }
-    runa(() => {
-        const input = document.querySelector(".docs-texteventtarget-iframe").contentDocument.activeElement;
-        const eventObj = document.createEvent("Event");
-        eventObj.initEvent("keypress", true, true);
-        eventObj.keyCode = code;
-        input.dispatchEvent(eventObj);
-    });
     // for plain field:
     var charcodeParsed = parseInt(String(code));
     document.activeElement.value = document.activeElement.value + String.fromCharCode(charcodeParsed);
