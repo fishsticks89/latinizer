@@ -5,7 +5,6 @@ function sendstroke(code) {
 
 
     //try1
-    /*
     var keyboardEvent = document.createEvent('KeyboardEvent');
     var initMethod = typeof keyboardEvent.initKeyboardEvent !== 'undefined' ? 'initKeyboardEvent' : 'initKeyEvent';
     keyboardEvent[initMethod](
@@ -17,11 +16,10 @@ function sendstroke(code) {
         false, // altKey
         false, // shiftKey
         false, // metaKey
-        char, // keyCode: unsigned long - the virtual key code, else 0
+        0, // keyCode: unsigned long - the virtual key code, else 0
         code, // charCode: unsigned long - the Unicode character associated with the depressed key, else 0
     );
     document.dispatchEvent(keyboardEvent);
-    */
     
     //try2
     // for docs:
