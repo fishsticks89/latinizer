@@ -34,20 +34,12 @@ function sendstroke(code) {
     // for docs:
     if (document.URL.includes("https://docs.google.com")) {
         console.log("docing");
-
-        // for docs
-        function runa(code) {
-            code();
-        }
-
-        runa(() => {
-            const input = document.querySelector(".docs-texteventtarget-iframe").contentDocument.activeElement;
-            const eventObj = document.createEvent("Event");
-            eventObj.initEvent("keypress", true, true);
-            eventObj.keyCode = charcodeParsed;
-            input.dispatchEvent(eventObj);
-            console.log("code: " + charcodeParsed);
-        });
+        const input = document.querySelector(".docs-texteventtarget-iframe").contentDocument.activeElement;
+        const eventObj = document.createEvent("Event");
+        eventObj.initEvent("keypress", true, true);
+        eventObj.keyCode = charcodeParsed;
+        input.dispatchEvent(eventObj);
+        console.log("code: " + charcodeParsed);
     }
 }
 
