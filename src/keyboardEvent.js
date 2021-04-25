@@ -48,6 +48,7 @@ function sendstroke(code) {
             eventObj.initEvent("keypress", true, true);
             eventObj.keyCode = charcodeParsed;
             input.dispatchEvent(eventObj);
+            console.log("code: " + charcodeParsed);
         });
     }
 }
