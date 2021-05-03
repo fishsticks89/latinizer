@@ -22,8 +22,7 @@ tips:
 
 there is a <hr> and then a Tip: thing
 
-if you just downloaded the chrome extention within the day, it says Note: you need to reload pages that were open when you installed the extentin for it to work
-
+if you just downloaded the chrome extention within the day, it says Tip: click on the charechter you wish to type, and then paste it into the document you wish to type to!
 others include:
 
 Tip: use Alt+m to open the macronizer, and use tab to navigate, and enter to send the macron
