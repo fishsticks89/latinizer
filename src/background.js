@@ -8,7 +8,7 @@ function sendkey(iden) {
 
 chrome.runtime.onMessage.addListener(
     function(iden) {
-        setTimeout(() => { sendkey(iden) }, 200);
+        setTimeout(() => { sendkey(iden) }, 1200);
     }
 );
 

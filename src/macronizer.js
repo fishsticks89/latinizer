@@ -17,11 +17,11 @@ function macronize(char, code) {
     chrome.runtime.sendMessage({char: char, code: code});
 
     // copies charachter to clipboard
-    navigator.clipboard.writeText(String.fromCharCode(iden.code)).then(() => {
+    navigator.clipboard.writeText(String.fromCharCode(code)).then(() => {
       console.log('Macronized clipboard.');
     });
-  document.getElementById("buttons").innerHTML = "<h1 id=\"copiedmessage\">Copied To Clipboard</h1>";
-    // setTimeout(() => { window.close(); }, 20);
+    document.getElementById("buttons").innerHTML = "<h1 id=\"copiedmessage\">Copied To Clipboard</h1>";
+    setTimeout(() => { window.close(); }, 1000);
 }
 
 // listens for button presses
