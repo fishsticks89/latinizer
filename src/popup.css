@@ -1,10 +1,11 @@
 @import url(https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap);
 
-.buttons {
-    display:flex;
+#buttons {
+    margin-top: -0.4rem;
+    display: flex;
 }
 
-button {
+.macronbutton {
     height: 4pc;
     width: 4pc;
     background-color: rgb(0, 193, 252);
@@ -16,12 +17,45 @@ button {
     margin: 1pc;
     font-family: Roboto;
 }
-button:focus {
+.macronbutton:focus {
     background-color: rgb(0, 155, 202);
     outline: none;
+}
+
+#nav {
+    position: absolute;
+    width: 80%;
+    top: 0;
+    display: flex;
+    justify-content: space-between;
+    padding-left: 10%;
+    margin-top: 0.4rem;
+}
+
+.navbutton {
+    color: rgb(0, 193, 252);
+    font-weight: 700;
+    background-color: white;
+    border: none;
+    font-size: small;
+}
+
+.navbutton:hover {
+    color: rgb(0, 155, 202);
+    outline: none;
+}
+
+#addpadding {
+    margin-top: 2rem;
 }
 
 h1 {
     color: rgb(0, 193, 252);
     text-align: center;
+}
+
+#tip {
+    font-size: medium;
+    padding: none;
+    margin: none;
 }

@@ -1,7 +1,28 @@
 // for testing:
-// console.log("keyboardEvent.js injected");
+console.log("keyboardEvent.js injected");
 
-function insertAtCursor(myField, myValue) {
+function setCaretPosition(elem, caretPos) {
+    if(elem != null) {
+        if(elem.createTextRange) {
+            var range = elem.createTextRange();
+            range.move('character', caretPos);
+            range.select();
+        }
+        else {
+            if(elem.selectionStart) {
+                elem.focus();
+                elem.setSelectionRange(caretPos, caretPos);
+            }
+            else
+                elem.focus();
+        }
+    }
+}
+
+function insertAtCarat(myField, myValue) {
+    // Old
+    // myField.value = myField.value + myValue;
+
     //IE support
     if (document.selection) {
         myField.focus();
@@ -11,19 +32,27 @@ function insertAtCursor(myField, myValue) {
     //MOZILLA and others
     else if (myField.selectionStart || myField.selectionStart == '0') {
         var startPos = myField.selectionStart;
+        console.log(startPos);
         var endPos = myField.selectionEnd;
         myField.value = myField.value.substring(0, startPos)
             + myValue
             + myField.value.substring(endPos, myField.value.length);
+        // Sets cursor position to end of macron ^
+        setTimeout(() => {
+            setCaretPosition(document.activeElement, startPos + 1);
+        }, 30);
     } else {
         myField.value += myValue;
     }
 }
 
 function sendstroke(code) {
+    console.log('active: ' + document.activeElement);
+    // DO: if active element has no text field, reopen the popup and send it a message to copy the char to clipboard
 
 
     //try1
+    /*
     var keyboardEvent = document.createEvent('KeyboardEvent');
     var initMethod = typeof keyboardEvent.initKeyboardEvent !== 'undefined' ? 'initKeyboardEvent' : 'initKeyEvent';
     keyboardEvent[initMethod](
@@ -39,6 +68,7 @@ function sendstroke(code) {
         code, // charCode: unsigned long - the Unicode character associated with the depressed key, else 0
     );
     document.dispatchEvent(keyboardEvent);
+    */
     
     //try2
     // for docs:
@@ -46,9 +76,8 @@ function sendstroke(code) {
     
     //try3
 
-    // for plain field:
+    // makes charcode string
     var charcodeParsed = parseInt(String(code));
-    // document.activeElement.value = document.activeElement.value + String.fromCharCode(charcodeParsed);
     
     // for docs:
     if (document.URL.includes("https://docs.google.com")) {
@@ -62,7 +91,7 @@ function sendstroke(code) {
     }
     
     // general try for form and textarea
-    insertAtCursor(document.activeElement, String.fromCharCode(charcodeParsed));
+    insertAtCarat(document.activeElement, String.fromCharCode(charcodeParsed));
 }
 
 chrome.runtime.onMessage.addListener(

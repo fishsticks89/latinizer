@@ -6,6 +6,8 @@ macronizer:
 
 sends macrons
 
+you can click the letter of the char instead of pressing it 
+
 dictionary:
 
 improved searchbar ui for whitaker's words that sends to an iframe of the word. if homepage is detected, goes back to search bar. Injects better css into search result
@@ -22,10 +24,7 @@ tips:
 
 there is a <hr> and then a Tip: thing
 
-if you just downloaded the chrome extention within the day, it says Tip: click on the charechter you wish to type, and then paste it into the document you wish to type to!
-others include:
-
-Tip: use Alt+m to open the macronizer, and use tab to navigate, and enter to send the macron
+Tip: use Alt+m to open the macronizer, and (use tab to navigate/press the letter of the macronized charechter), and enter to send the macron
 
 Tip: don't like the Alt+m hotkey? click here{chrome://extensions/shortcuts} to disable it
 
@@ -33,7 +32,7 @@ buy me a coffee {donate link}
 
 Feedback:
 
-include active site adress checkbox
-descripe issue feild
+include active site address checkbox
+descripe issue field
 send feedback button
 tip: something not working? Update Chrome {chrome://settings/help}
