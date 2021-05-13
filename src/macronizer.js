@@ -51,6 +51,10 @@ function tip(tip) {
 // Sets the buttons div to the macronizer UI
 function macronizer() {
   pagestate = 1;
+
+  // destroys the UI
+  document.getElementById("buttons").innerHTML = '';
+  text = '';
   // Initialises the UI
   for (i = 0; i < char.length; i++) {
     text += "<button class=\"macronbutton\" id=\"" + code[i] + "\">" + char[i] + "</button>\n";
@@ -79,5 +83,19 @@ function macronizer() {
   }
 }
 
-// calls macronizer to initiate the macrinization button ui
+function dictionary() {
+  document.getElementById("buttons").innerHTML = '<iframe id="whit" src="http://archives.nd.edu/words.html"></iframe>';
+}
+
+// Initialises the navbar buttons
+function nav() {
+  document.getElementById("macronizerbutton").addEventListener("click", () => macronizer());
+  document.getElementById("dictionarybutton").addEventListener("click", () => dictionary());
+  document.getElementById('nounendingsbutton').addEventListener("click", () => {chrome.tabs.create({url: 'https://docs.google.com/document/d/1D4u5P8XzFIOjSuJOFvGlJmPhopglmbufynAhisqRYhc/edit'});});
+  document.getElementById('verbendingsbutton').addEventListener("click", () => {chrome.tabs.create({url: 'https://docs.google.com/document/d/1uQK0x0uhSZCPv1iLhv9yKp85mReP4nh31ylBytQw0E0/edit'});});
+}
+
+// calls nav to initiate the navbar buttons
+nav();
+// calls macronizer to initiate the macronization button ui
 macronizer();
