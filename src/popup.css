@@ -32,6 +32,19 @@
     margin-top: 0.4rem;
 }
 
+.notabutton{
+    background: none;
+    padding: none;
+    font-size: medium;
+    border: none;
+    color: rgb(0, 193, 252);
+}
+
+.notabutton:focus{
+    color: rgb(0, 155, 202);
+    outline: none;
+}
+
 .navbutton {
     color: rgb(0, 193, 252);
     font-weight: 700;

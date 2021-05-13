@@ -1,8 +1,11 @@
-var char = ["&#x0101", "&#x0113", "&#x012B", "&#x014D", "&#x016B"];
-var code = ["257", "275", "299", "333", "363"];
+const char = ["&#x0101", "&#x0113", "&#x012B", "&#x014D", "&#x016B"];
+const unmacronized = [65, 69, 73, 79, 85];
+const code = ["257", "275", "299", "333", "363"];
 var text = "";
-const tips = ["<b>Tip:</b> use Alt+m to open the macronizer and (use tab to navigate/press the letter of the macronized character), and enter to send the macron", "<b>Tip:</b> Don't like the Alt+m hotkey? <a href=\"chrome://extensions/shortcuts\">click here</a> to disable it"];
+const tips = ["<b>Tip:</b> use Alt+m to open the macronizer, use tab to navigate/press the letter of the macronized character, and enter to send the macron", "<b>Tip:</b> Don't like the Alt+m hotkey?<button class=\"notabutton\" id=\"settingsShortcuts\">Click here</button>to disable it"];
+var tipsinit = 0;
 var pagestate = 1;
+var i;
 
 // forwards keypress to background.js when the buttons are pressed
 function macronize(char, code) {
@@ -30,14 +33,22 @@ function random(mn, mx) {
 } 
 
 function tip(tip) {
+  i = parseInt(random(0, tips.length));
   if (tip == null) {
-    text = tips[parseInt(random(0, tips.length))];
+    text = tips[i];
   } else {
     text = tip;
   } 
   document.getElementById("tip").innerHTML = text;
+
+  if (i == 1) {
+    // sends the user to settings if they want to go
+    document.getElementById('settingsShortcuts').addEventListener("click", () => {chrome.tabs.create({url: 'chrome://extensions/shortcuts'});});
+    tipsinit = 1
+  }
 }
 
+// Sets the buttons div to the macronizer UI
 function macronizer() {
   pagestate = 1;
   // Initialises the UI
@@ -51,7 +62,22 @@ function macronizer() {
   for (let i = 0; i < char.length; i++) {
     document.getElementById(code[i]).addEventListener("click", () => macronize(char[i], code[i]));
   }
+  // Sets the tip to a randon tip
   tip(null);
+
+  var pressedKeyCode;
+  // listens for keypresses on the unmacronized keyboard charachter
+  for (let i = 0; i < char.length; i++) {
+    document.addEventListener("keypress", function (e) {
+      pressedKeyCode = e.code.charCodeAt(3);
+      console.log(pressedKeyCode);
+
+      if (pressedKeyCode == unmacronized[i]) {
+        macronize(char[i], code[i]);
+      }
+  });
+  }
 }
 
+// calls macronizer to initiate the macrinization button ui
 macronizer();
