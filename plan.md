@@ -20,7 +20,7 @@ noun endings:
 
 dropdown for declention, case, gender, plurality the, it sends the ending and shows it and a copy button. it is gotten from a massive object called endings
 
-Verb endings: 
+verb endings: 
 
 A grid with all the options for case and an i with a circle for info
 
@@ -28,7 +28,7 @@ It then shows you the chart
 
 tips:
 
-there is a <hr> and then a Tip: thing
+there is an <hr> and then a Tip: thing
 
 Tip: use Alt+m to open the macronizer, and (use tab to navigate/press the letter of the macronized charechter), and enter to send the macron
 

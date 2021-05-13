@@ -4,6 +4,7 @@ const code = ["257", "275", "299", "333", "363"];
 var text = "";
 const tips = ["<b>Tip:</b> use Alt+m to open the macronizer, use tab to navigate/press the letter of the macronized character, and enter to send the macron", "<b>Tip:</b> Don't like the Alt+m hotkey?<button class=\"notabutton\" id=\"settingsShortcuts\">Click here</button>to disable it"];
 var tipsinit = 0;
+var kbdlistenerinit = 0;
 var pagestate = 1;
 var i;
 
@@ -69,18 +70,21 @@ function macronizer() {
   // Sets the tip to a randon tip
   tip(null);
 
-  var pressedKeyCode;
-  // listens for keypresses on the unmacronized keyboard charachter
-  for (let i = 0; i < char.length; i++) {
-    document.addEventListener("keypress", function (e) {
-      pressedKeyCode = e.code.charCodeAt(3);
-      console.log(pressedKeyCode);
+  if (kbdlistenerinit == 0) {
+    var pressedKeyCode;
+    // listens for keypresses on the unmacronized keyboard charachter
+    for (let i = 0; i < char.length; i++) {
+      document.addEventListener("keypress", function (e) {
+        pressedKeyCode = e.code.charCodeAt(3);
+        console.log(pressedKeyCode);
 
-      if (pressedKeyCode == unmacronized[i]) {
-        macronize(char[i], code[i]);
-      }
-  });
+        if (pressedKeyCode == unmacronized[i]) {
+          macronize(char[i], code[i]);
+        }
+    });
+    }
   }
+  kbdlistenerinit = 1;
 }
 
 function dictionary() {
