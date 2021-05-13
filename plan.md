@@ -20,6 +20,12 @@ noun endings:
 
 dropdown for declention, case, gender, plurality the, it sends the ending and shows it and a copy button. it is gotten from a massive object called endings
 
+Verb endings: 
+
+A grid with all the options for case and an i with a circle for info
+
+It then shows you the chart
+
 tips:
 
 there is a <hr> and then a Tip: thing
