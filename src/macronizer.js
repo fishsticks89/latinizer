@@ -94,6 +94,9 @@ function dictionary() {
 // Initialises the navbar buttons
 function nav() {
   document.getElementById("macronizerbutton").addEventListener("click", () => macronizer());
+  // doesn't work \/
+  document.addEventListener("keydown", (e) => {console.log(e.code); if (e.code == "KeyM") {() => macronizer()}});
+
   document.getElementById("dictionarybutton").addEventListener("click", () => dictionary());
   document.getElementById('nounendingsbutton').addEventListener("click", () => {chrome.tabs.create({url: 'https://docs.google.com/document/d/1D4u5P8XzFIOjSuJOFvGlJmPhopglmbufynAhisqRYhc/edit'});});
   document.getElementById('verbendingsbutton').addEventListener("click", () => {chrome.tabs.create({url: 'https://docs.google.com/document/d/1uQK0x0uhSZCPv1iLhv9yKp85mReP4nh31ylBytQw0E0/edit'});});
