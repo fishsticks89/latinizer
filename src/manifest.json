@@ -21,9 +21,11 @@
         }
       ],
     "commands": {
-      "open": {
+      "_execute_browser_action": {
         "suggested_key": {
-          "default": "Alt+M"
+          "default": "Shift+Alt+M",
+          "windows": "Shift+Alt+M",
+          "mac": "Shift+Alt+M"
         },
         "description": "Activate the extention"
       }
