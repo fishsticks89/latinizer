@@ -5,7 +5,7 @@ This can also be used as a template for other types of keyboards! just modify th
 
 **Note:** I apologize for any mispellings of the word *character* throughout this code.
 
-# How to install beta in 8 easy steps! (may not be stable):
+# How to install beta in 10 easy steps! (may not be stable):
 You must
 1. Go to https://github.com/fishsticks89/Latinizer
 
