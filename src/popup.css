@@ -24,11 +24,11 @@
 
 #nav {
     position: absolute;
-    width: 80%;
+    width: 90%;
     top: 0;
     display: flex;
     justify-content: space-between;
-    padding-left: 10%;
+    padding-left: 5%;
     margin-top: 0.4rem;
     margin-bottom: none;
     padding-bottom: none;
@@ -57,7 +57,11 @@
 
 .navbutton:hover {
     color: rgb(0, 155, 202);
-    outline: none;
+}
+
+.navbutton:focus {
+    color: rgb(0, 155, 202);
+    outline: 2px;
 }
 
 #addpadding {

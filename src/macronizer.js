@@ -99,6 +99,10 @@ function verbEndings() {
   chrome.tabs.create({url: 'ActiveVerbEndings.html'});
 }
 
+function feedback() {
+  chrome.tabs.create({url: 'https://github.com/fishsticks89/Latinizer/issues/new'});
+}
+
 // Initialises the navbar buttons
 function nav() {
   document.getElementById("macronizerbutton").addEventListener("click", () => macronizer());
@@ -112,6 +116,9 @@ function nav() {
 
   document.getElementById('verbendingsbutton').addEventListener("click", () => {verbEndings()});
   document.addEventListener("keydown", (e) => {console.log(e.key); if (e.key == 'v') {verbEndings()}});
+
+  document.getElementById('feedbackbutton').addEventListener("click", () => {feedback()});
+  document.addEventListener("keydown", (e) => {console.log(e.key); if (e.key == 'f') {feedback()}});
 }
 
 // calls nav to initiate the navbar buttons
