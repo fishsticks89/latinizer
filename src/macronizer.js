@@ -91,15 +91,27 @@ function dictionary() {
   document.getElementById("buttons").innerHTML = '<iframe id="whit" src="http://archives.nd.edu/words.html"></iframe>';
 }
 
+function nounChart() {
+  chrome.tabs.create({url: 'NounChart.html'});
+}
+
+function verbEndings() {
+  chrome.tabs.create({url: 'ActiveVerbEndings.html'});
+}
+
 // Initialises the navbar buttons
 function nav() {
   document.getElementById("macronizerbutton").addEventListener("click", () => macronizer());
-  // doesn't work \/
-  document.addEventListener("keydown", (e) => {console.log(e.key); if (e.key == 'm') {() => macronizer()}});
+  document.addEventListener("keydown", (e) => {console.log(e.key); if (e.key == 'm') {macronizer()}});
 
   document.getElementById("dictionarybutton").addEventListener("click", () => dictionary());
-  document.getElementById('nounendingsbutton').addEventListener("click", () => {chrome.tabs.create({url: 'NounChart.html'});});
-  document.getElementById('verbendingsbutton').addEventListener("click", () => {chrome.tabs.create({url: 'ActiveVerbEndings.html'});});
+  document.addEventListener("keydown", (e) => {console.log(e.key); if (e.key == 'd') {dictionary()}});
+
+  document.getElementById('nounendingsbutton').addEventListener("click", () => {nounChart()});
+  document.addEventListener("keydown", (e) => {console.log(e.key); if (e.key == 'n') {nounChart()}});
+
+  document.getElementById('verbendingsbutton').addEventListener("click", () => {verbEndings()});
+  document.addEventListener("keydown", (e) => {console.log(e.key); if (e.key == 'v') {verbEndings()}});
 }
 
 // calls nav to initiate the navbar buttons
