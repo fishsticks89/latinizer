@@ -4,7 +4,7 @@ const code = ["257", "275", "299", "333", "363"];
 var text = "";
 const tips = ["<b>Tip:</b> use Alt+m to open the macronizer, use tab to navigate/press the letter of the macronized character, and enter to send the macron", "<b>Tip:</b> Don't like the Alt+m hotkey?<button class=\"notabutton\" id=\"settingsShortcuts\">Click here</button>to disable it"];
 var tipsinit = 0;
-var kbdlistenerinit = 0;
+var macronlistenerinit = 0;
 var pagestate = 1;
 var i;
 
@@ -42,10 +42,13 @@ function tip(tip) {
   } 
   document.getElementById("tip").innerHTML = text;
 
-  if (i == 1) {
-    // sends the user to settings if they want to go
-    document.getElementById('settingsShortcuts').addEventListener("click", () => {chrome.tabs.create({url: 'chrome://extensions/shortcuts'});});
-    tipsinit = 1
+  // initialises listeners for tips
+  if (tipsinit == 0){
+    if (i == 1) {
+      // sends the user to settings if they want to go
+      document.getElementById('settingsShortcuts').addEventListener("click", () => {chrome.tabs.create({url: 'chrome://extensions/shortcuts'});});
+      tipsinit = 1
+    }
   }
 }
 
@@ -70,7 +73,8 @@ function macronizer() {
   // Sets the tip to a randon tip
   tip(null);
 
-  if (kbdlistenerinit == 0) {
+  // initializes the event listeners:
+  if (macronlistenerinit == 0) {
     var pressedKeyCode;
     // listens for keypresses on the unmacronized keyboard charachter
     for (let i = 0; i < char.length; i++) {
@@ -84,22 +88,26 @@ function macronizer() {
     });
     }
   }
-  kbdlistenerinit = 1;
+  macronlistenerinit = 1;
 }
 
 function dictionary() {
   document.getElementById("buttons").innerHTML = '<iframe id="whit" src="http://archives.nd.edu/words.html"></iframe>';
+  pagestate = 2;
 }
 
 function nounChart() {
+  pagestate = 3;
   chrome.tabs.create({url: 'NounChart.html'});
 }
 
 function verbEndings() {
+  pagestate = 4;
   chrome.tabs.create({url: 'ActiveVerbEndings.html'});
 }
 
 function feedback() {
+  pagestate = 5;
   chrome.tabs.create({url: 'https://github.com/fishsticks89/Latinizer/issues/new'});
 }
 
