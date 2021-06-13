@@ -1,5 +1,15 @@
 @import url(https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap);
 
+html {
+    height: fit-content;
+}
+
+body {
+    height: fit-content;
+    background-color: black;
+    color: white;
+}
+
 #buttons {
     margin-top: -0.4rem;
     display: flex;
@@ -13,10 +23,11 @@
     color: white;
     border: none;
     font-size: medium;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.6);
+    box-shadow: 0px 0px 20px hsl(194, 80%, 60%);
     margin: 1pc;
     font-family: Roboto;
 }
+
 .macronbutton:focus {
     background-color: rgb(0, 155, 202);
     outline: none;
@@ -50,9 +61,9 @@
 .navbutton {
     color: rgb(0, 193, 252);
     font-weight: 500;
-    background-color: white;
     border: none;
     font-size: small;
+    background-color: black;
 }
 
 .navbutton:hover {
@@ -78,7 +89,65 @@ h1 {
     padding: none;
     margin: none;
 }
+
 #whit {
+    margin-top: 0.35rem;
     width: 480px;
     height: 170px;
+    border: none;
+}
+
+#prop {
+    color: black;
+    background-color: black;
+    width: 30pc;
+}
+
+hr {
+    background-color: white;
+    width: 1pc;
+}
+
+#dictionarySearch {
+    margin-top: 0.35rem;
+    margin-left: 5%;
+    margin-right: 5%;
+    width: 90%;
+    display: flex;
+    justify-content: center;
+}
+
+#dictionaryForm {
+    flex-grow: 2;
+    height: 20px;
+}
+
+#dictionaryFormField {
+    width: 97%;
+    height: 100%;
+    outline: white;
+    border: none;
+    border-radius: 0.3rem;
+    padding-left: 0.4rem;
+}
+
+.dictionaryButton {
+    margin-left: 0.3rem;
+    background-color: rgb(0, 193, 252);
+    border-radius: 0.3rem;
+    /* box-shadow: 0px 0px 10px hsl(194, 80%, 60%); */
+    color: white;
+
+    border: white;
+    border-width: 0.15rem;
+    /*border-style: solid;*/
+
+    outline: white;
+
+    padding-right: 0.4rem;
+    padding-left: 0.4rem;
+}
+
+.dictionaryButton:hover {
+    background-color: rgb(0, 155, 202);
 }
