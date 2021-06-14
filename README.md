@@ -7,11 +7,13 @@ This can also be used as a template for other types of keyboards! just modify th
 
 # How to install beta in 10 easy steps! (limited funtionality):
 You must
-1. Go to https://github.com/fishsticks89/Latinizer
+1. Go to https://github.com/fishsticks89/Latinizer/releases
 
-3. Download Zip
+2. Click on assets ![image](https://user-images.githubusercontent.com/61331006/121950454-80425880-cd0e-11eb-9d74-0a6312568fe3.png)
 
-![image](https://user-images.githubusercontent.com/61331006/118342598-d0908580-b4d8-11eb-98bd-00e32a2ae4f5.png)
+
+
+3. Download Zip ![image](https://user-images.githubusercontent.com/61331006/121950559-a4059e80-cd0e-11eb-8071-5a3ff1375737.png)
 
 
 
@@ -21,7 +23,7 @@ You must
 
 
 
-4. go to chrome://extensions/
+5. go to chrome://extensions/
 
 6. Turn on developer mode
 
