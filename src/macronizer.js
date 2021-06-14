@@ -2,7 +2,7 @@ const char = ["&#x0101", "&#x0113", "&#x012B", "&#x014D", "&#x016B"];
 const unmacronized = [65, 69, 73, 79, 85];
 const code = ["257", "275", "299", "333", "363"];
 var text = "";
-const tips = ["<b>Tip:</b> use Alt+m to open the macronizer, use tab to navigate/press the letter of the macronized character, and enter to send the macron", "<b>Tip:</b> Don't like the Alt+m hotkey?<button class=\"notabutton\" id=\"settingsShortcuts\">Click here</button>to disable it"];
+const tips = ["<b>Tip:</b> use Alt+m to open the macronizer!", "<b>Tip:</b> Don't like the Alt+m hotkey?<button class=\"notabutton\" id=\"settingsShortcuts\">Click here</button>to disable it", "<b>Tip:</b> Click a to type ā once you've opened the macronizer"];
 var tipsinit = 0;
 
 // these tell whether or not the button listeners for that part of the extention are initialized
@@ -42,7 +42,7 @@ function clipboard(code) {
 
 // Random # from range 
 function random(mn, mx) { 
-  return Math.random() * (mx - mn) + mn; 
+  return Math.random() * (mx - mn) + mn;
 } 
 
 // ------ FUNCTIONS TO INITIALIZE UI ------
@@ -61,7 +61,7 @@ function tip(tip) {
     if (i == 1) {
       // sends the user to settings if they want to go
       document.getElementById('settingsShortcuts').addEventListener("click", () => {chrome.tabs.create({url: 'chrome://extensions/shortcuts'});});
-      tipsinit = 1
+      tipsinit = 1;
     }
   }
 }
@@ -101,7 +101,7 @@ function macronizer() {
             macronize(char[i], code[i]);
           }
         }
-    });
+      });
     }
   }
   macronlistenerinit = 1;
@@ -144,366 +144,376 @@ var nounEndings = {} /*'<button class="endingsButton" id="1">1st Declension</but
   nounEndings.first = {} /*'<button class="endingsButton" id="1">nominative</button><button class="endingsButton" id="2">Genative</button><button class="endingsButton" id="3">Dative</button><button class="endingsButton" id="4">Accusative</button><button class="endingsButton" id="5">Ablative</button>'*/;
     nounEndings.first.nom = {} /*'<button class="endingsButton" id="1">Masculine</button><button class="endingsButton" id="2">Feminine</button><button class="endingsButton" id="3">neuter</button>'*/;
       nounEndings.first.nom.masc = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.first.nom.masc.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.first.nom.masc.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.first.nom.masc.singular = '';
+        nounEndings.first.nom.masc.plural = '';
 
       nounEndings.first.nom.fem = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.first.nom.fem.singular = '<h4 class="endingsButton">-a</h4>';
-        nounEndings.first.nom.fem.plural = '<h4 class="endingsButton">-ae</h4>';
+        nounEndings.first.nom.fem.singular = '-a';
+        nounEndings.first.nom.fem.plural = '-ae';
 
       nounEndings.first.nom.neuter = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.first.nom.neuter.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.first.nom.neuter.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.first.nom.neuter.singular = 'N/A';
+        nounEndings.first.nom.neuter.plural = 'N/A';
 
 
     nounEndings.first.gen = {} /*'<button class="endingsButton" id="1">Masculine</button><button class="endingsButton" id="2">Feminine</button><button class="endingsButton" id="3">neuter</button>'*/;
       nounEndings.first.gen.masc = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.first.gen.masc.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.first.gen.masc.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.first.gen.masc.singular = '';
+        nounEndings.first.gen.masc.plural = '';
 
       nounEndings.first.gen.fem = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.first.gen.fem.singular = '<h4 class="endingsButton">-ae</h4>';
-        nounEndings.first.gen.fem.plural = '<h4 class="endingsButton">-ārum</h4>';
+        nounEndings.first.gen.fem.singular = '-ae';
+        nounEndings.first.gen.fem.plural = '-ārum';
 
       nounEndings.first.gen.neuter = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.first.gen.neuter.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.first.gen.neuter.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.first.gen.neuter.singular = 'N/A';
+        nounEndings.first.gen.neuter.plural = 'N/A';
 
 
     nounEndings.first.dat = {} /*'<button class="endingsButton" id="1">Masculine</button><button class="endingsButton" id="2">Feminine</button><button class="endingsButton" id="3">neuter</button>'*/;
       nounEndings.first.dat.masc = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.first.dat.masc.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.first.dat.masc.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.first.dat.masc.singular = '';
+        nounEndings.first.dat.masc.plural = '';
 
       nounEndings.first.dat.fem = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.first.dat.fem.singular = '<h4 class="endingsButton">-ae</h4>';
-        nounEndings.first.dat.fem.plural = '<h4 class="endingsButton"-īs</h4>';
+        nounEndings.first.dat.fem.singular = '-ae';
+        nounEndings.first.dat.fem.plural = '-īs';
 
-      nounEndings.first.dat.neuter = '<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>';
-        nounEndings.first.dat.neuter.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.first.dat.neuter.plural = '<h4 class="endingsButton"></h4>';
+      nounEndings.first.dat.neuter = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
+        nounEndings.first.dat.neuter.singular = 'N/A';
+        nounEndings.first.dat.neuter.plural = 'N/A';
 
 
     nounEndings.first.acc = {} /*'<button class="endingsButton" id="1">Masculine</button><button class="endingsButton" id="2">Feminine</button><button class="endingsButton" id="3">neuter</button>'*/;
       nounEndings.first.acc.masc = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.first.acc.masc.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.first.acc.masc.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.first.acc.masc.singular = '';
+        nounEndings.first.acc.masc.plural = '';
 
       nounEndings.first.acc.fem = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.first.acc.fem.singular = '<h4 class="endingsButton">-am</h4>';
-        nounEndings.first.acc.fem.plural = '<h4 class="endingsButton">-ās</h4>';
+        nounEndings.first.acc.fem.singular = '-am';
+        nounEndings.first.acc.fem.plural = '-ās';
 
       nounEndings.first.acc.neuter = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.first.acc.neuter.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.first.acc.neuter.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.first.acc.neuter.singular = 'N/A';
+        nounEndings.first.acc.neuter.plural = 'N/A';
 
 
     nounEndings.first.abl = {} /*'<button class="endingsButton" id="1">Masculine</button><button class="endingsButton" id="2">Feminine</button><button class="endingsButton" id="3">neuter</button>'*/;
       nounEndings.first.abl.masc = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.first.abl.masc.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.first.abl.masc.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.first.abl.masc.singular = '';
+        nounEndings.first.abl.masc.plural = '';
 
       nounEndings.first.abl.fem = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.first.abl.fem.singular = '<h4 class="endingsButton">-ā</h4>';
-        nounEndings.first.abl.fem.plural = '<h4 class="endingsButton">-īs</h4>';
+        nounEndings.first.abl.fem.singular = '-ā';
+        nounEndings.first.abl.fem.plural = '-īs';
 
       nounEndings.first.abl.neuter = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.first.abl.neuter.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.first.abl.neuter.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.first.abl.neuter.singular = 'N/A';
+        nounEndings.first.abl.neuter.plural = 'N/A';
 
 
 
   nounEndings.second = {} /*'<button class="endingsButton" id="1">nominative</button><button class="endingsButton" id="2">Genative</button><button class="endingsButton" id="3">Dative</button><button class="endingsButton" id="4">Accusative</button><button class="endingsButton" id="5">Ablative</button>'*/;
     nounEndings.second.nom = {} /*'<button class="endingsButton" id="1">Masculine</button><button class="endingsButton" id="2">Feminine</button><button class="endingsButton" id="3">neuter</button>'*/;
       nounEndings.second.nom.masc = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.second.nom.masc.singular = '<h4 class="endingsButton">-us</h4>';
-        nounEndings.second.nom.masc.plural = '<h4 class="endingsButton">-ī</h4>';
+        nounEndings.second.nom.masc.singular = '-us';
+        nounEndings.second.nom.masc.plural = '-ī';
 
       nounEndings.second.nom.fem = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.second.nom.fem.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.second.nom.fem.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.second.nom.fem.singular = '-us';
+        nounEndings.second.nom.fem.plural = '-ī';
 
       nounEndings.second.nom.neuter = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.second.nom.neuter.singular = '<h4 class="endingsButton">-um</h4>';
-        nounEndings.second.nom.neuter.plural = '<h4 class="endingsButton">-a</h4>';
+        nounEndings.second.nom.neuter.singular = '-um';
+        nounEndings.second.nom.neuter.plural = '-a';
 
 
     nounEndings.second.gen = {} /*'<button class="endingsButton" id="1">Masculine</button><button class="endingsButton" id="2">Feminine</button><button class="endingsButton" id="3">neuter</button>'*/;
       nounEndings.second.gen.masc = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.second.gen.masc.singular = '<h4 class="endingsButton">-ī</h4>';
-        nounEndings.second.gen.masc.plural = '<h4 class="endingsButton">-ōrum</h4>';
+        nounEndings.second.gen.masc.singular = '-ī';
+        nounEndings.second.gen.masc.plural = '-ōrum';
 
       nounEndings.second.gen.fem = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.second.gen.fem.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.second.gen.fem.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.second.gen.fem.singular = '-ī';
+        nounEndings.second.gen.fem.plural = '-ōrum';
 
       nounEndings.second.gen.neuter = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.second.gen.neuter.singular = '<h4 class="endingsButton">-ī</h4>';
-        nounEndings.second.gen.neuter.plural = '<h4 class="endingsButton">-ōrum</h4>';
+        nounEndings.second.gen.neuter.singular = '-ī';
+        nounEndings.second.gen.neuter.plural = '-ōrum';
 
 
     nounEndings.second.dat = {} /*'<button class="endingsButton" id="1">Masculine</button><button class="endingsButton" id="2">Feminine</button><button class="endingsButton" id="3">neuter</button>'*/;
-      nounEndings.second.dat.masc = '<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>';
-        nounEndings.second.dat.masc.singular = '<h4 class="endingsButton">-ō</h4>';
-        nounEndings.second.dat.masc.plural = '<h4 class="endingsButton">-īs</h4>';
+      nounEndings.second.dat.masc = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
+        nounEndings.second.dat.masc.singular = '-ō';
+        nounEndings.second.dat.masc.plural = '-īs';
 
       nounEndings.second.dat.fem = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.second.dat.fem.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.second.dat.fem.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.second.dat.fem.singular = '-ō';
+        nounEndings.second.dat.fem.plural = '-īs';
 
       nounEndings.second.dat.neuter = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.second.dat.neuter.singular = '<h4 class="endingsButton">-ō</h4>';
-        nounEndings.second.dat.neuter.plural = '<h4 class="endingsButton">-īs</h4>';
+        nounEndings.second.dat.neuter.singular = '-ō';
+        nounEndings.second.dat.neuter.plural = '-īs';
 
 
     nounEndings.second.acc = {} /*'<button class="endingsButton" id="1">Masculine</button><button class="endingsButton" id="2">Feminine</button><button class="endingsButton" id="3">neuter</button>'*/;
       nounEndings.second.acc.masc = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.second.acc.masc.singular = '<h4 class="endingsButton">-um</h4>';
-        nounEndings.second.acc.masc.plural = '<h4 class="endingsButton">-ōs</h4>';
+        nounEndings.second.acc.masc.singular = '-um';
+        nounEndings.second.acc.masc.plural = '-ōs';
 
       nounEndings.second.acc.fem = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.second.acc.fem.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.second.acc.fem.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.second.acc.fem.singular = '-um';
+        nounEndings.second.acc.fem.plural = '-ōs';
 
       nounEndings.second.acc.neuter = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.second.acc.neuter.singular = '<h4 class="endingsButton">-um</h4>';
-        nounEndings.second.acc.neuter.plural = '<h4 class="endingsButton">-a</h4>';
+        nounEndings.second.acc.neuter.singular = '-um';
+        nounEndings.second.acc.neuter.plural = '-a';
 
 
     nounEndings.second.abl = {} /*'<button class="endingsButton" id="1">Masculine</button><button class="endingsButton" id="2">Feminine</button><button class="endingsButton" id="3">neuter</button>'*/;
       nounEndings.second.abl.masc = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.second.abl.masc.singular = '<h4 class="endingsButton">-ō</h4>';
-        nounEndings.second.abl.masc.plural = '<h4 class="endingsButton">-īs</h4>';
+        nounEndings.second.abl.masc.singular = '-ō';
+        nounEndings.second.abl.masc.plural = '-īs';
 
       nounEndings.second.abl.fem = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.second.abl.fem.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.second.abl.fem.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.second.abl.fem.singular = '-ō';
+        nounEndings.second.abl.fem.plural = '-īs';
 
       nounEndings.second.abl.neuter = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.second.abl.neuter.singular = '<h4 class="endingsButton">-ō</h4>';
-        nounEndings.second.abl.neuter.plural = '<h4 class="endingsButton">-īs</h4>';
+        nounEndings.second.abl.neuter.singular = '-ō';
+        nounEndings.second.abl.neuter.plural = '-īs';
 
 
 
   nounEndings.third = {} /*'<button class="endingsButton" id="1">nominative</button><button class="endingsButton" id="2">Genative</button><button class="endingsButton" id="3">Dative</button><button class="endingsButton" id="4">Accusative</button><button class="endingsButton" id="5">Ablative</button>'*/;
     nounEndings.third.nom = {} /*'<button class="endingsButton" id="1">Masculine</button><button class="endingsButton" id="2">Feminine</button><button class="endingsButton" id="3">neuter</button>'*/;
       nounEndings.third.nom.masc = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.third.nom.masc.singular = '<h4 class="endingsButton">(varies)</h4>';
-        nounEndings.third.nom.masc.plural = '<h4 class="endingsButton">-ēs</h4>';
+        nounEndings.third.nom.masc.singular = '(varies)';
+        nounEndings.third.nom.masc.plural = '-ēs';
 
       nounEndings.third.nom.fem = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.third.nom.fem.singular = '<h4 class="endingsButton">(varies)</h4>';
-        nounEndings.third.nom.fem.plural = '<h4 class="endingsButton">-ēs</h4>';
+        nounEndings.third.nom.fem.singular = '(varies)';
+        nounEndings.third.nom.fem.plural = '-ēs';
 
       nounEndings.third.nom.neuter = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.third.nom.neuter.singular = '<h4 class="endingsButton">(varies)</h4>';
-        nounEndings.third.nom.neuter.plural = '<h4 class="endingsButton">-a</h4>';
+        nounEndings.third.nom.neuter.singular = '(varies)';
+        nounEndings.third.nom.neuter.plural = '-a';
 
 
     nounEndings.third.gen = {} /*'<button class="endingsButton" id="1">Masculine</button><button class="endingsButton" id="2">Feminine</button><button class="endingsButton" id="3">neuter</button>'*/;
       nounEndings.third.gen.masc = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.third.gen.masc.singular = '<h4 class="endingsButton">-is</h4>';
-        nounEndings.third.gen.masc.plural = '<h4 class="endingsButton">-um</h4>';
+        nounEndings.third.gen.masc.singular = '-is';
+        nounEndings.third.gen.masc.plural = '-um';
 
       nounEndings.third.gen.fem = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.third.gen.fem.singular = '<h4 class="endingsButton">-is</h4>';
-        nounEndings.third.gen.fem.plural = '<h4 class="endingsButton">-um</h4>';
+        nounEndings.third.gen.fem.singular = '-is';
+        nounEndings.third.gen.fem.plural = '-um';
 
       nounEndings.third.gen.neuter = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.third.gen.neuter.singular = '<h4 class="endingsButton">-is</h4>';
-        nounEndings.third.gen.neuter.plural = '<h4 class="endingsButton">-um</h4>';
+        nounEndings.third.gen.neuter.singular = '-is';
+        nounEndings.third.gen.neuter.plural = '-um';
 
 
     nounEndings.third.dat = {} /*'<button class="endingsButton" id="1">Masculine</button><button class="endingsButton" id="2">Feminine</button><button class="endingsButton" id="3">neuter</button>'*/;
       nounEndings.third.dat.masc = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.third.dat.masc.singular = '<h4 class="endingsButton">-ī</h4>';
-        nounEndings.third.dat.masc.plural = '<h4 class="endingsButton">-ibus</h4>';
+        nounEndings.third.dat.masc.singular = '-ī';
+        nounEndings.third.dat.masc.plural = '-ibus';
 
       nounEndings.third.dat.fem = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.third.dat.fem.singular = '<h4 class="endingsButton">-ī</h4>';
-        nounEndings.third.dat.fem.plural = '<h4 class="endingsButton">-ibus</h4>';
+        nounEndings.third.dat.fem.singular = '-ī';
+        nounEndings.third.dat.fem.plural = '-ibus';
 
       nounEndings.third.dat.neuter = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.third.dat.neuter.singular = '<h4 class="endingsButton">-ī</h4>';
-        nounEndings.third.dat.neuter.plural = '<h4 class="endingsButton">-ibus</h4>';
+        nounEndings.third.dat.neuter.singular = '-ī';
+        nounEndings.third.dat.neuter.plural = '-ibus';
 
 
     nounEndings.third.acc = {} /*'<button class="endingsButton" id="1">Masculine</button><button class="endingsButton" id="2">Feminine</button><button class="endingsButton" id="3">neuter</button>'*/;
       nounEndings.third.acc.masc = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.third.acc.masc.singular = '<h4 class="endingsButton">-em</h4>';
-        nounEndings.third.acc.masc.plural = '<h4 class="endingsButton">-ēs</h4>';
+        nounEndings.third.acc.masc.singular = '-em';
+        nounEndings.third.acc.masc.plural = '-ēs';
 
       nounEndings.third.acc.fem = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.third.acc.fem.singular = '<h4 class="endingsButton">-em</h4>';
-        nounEndings.third.acc.fem.plural = '<h4 class="endingsButton">-ēs</h4>';
+        nounEndings.third.acc.fem.singular = '-em';
+        nounEndings.third.acc.fem.plural = '-ēs';
 
       nounEndings.third.acc.neuter = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.third.acc.neuter.singular = '<h4 class="endingsButton">(varies)</h4>';
-        nounEndings.third.acc.neuter.plural = '<h4 class="endingsButton">-a</h4>';
+        nounEndings.third.acc.neuter.singular = '(varies)';
+        nounEndings.third.acc.neuter.plural = '-a';
 
 
     nounEndings.third.abl = {} /*'<button class="endingsButton" id="1">Masculine</button><button class="endingsButton" id="2">Feminine</button><button class="endingsButton" id="3">neuter</button>'*/;
       nounEndings.third.abl.masc = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.third.abl.masc.singular = '<h4 class="endingsButton">-e</h4>';
-        nounEndings.third.abl.masc.plural = '<h4 class="endingsButton">-ibus</h4>';
+        nounEndings.third.abl.masc.singular = '-e';
+        nounEndings.third.abl.masc.plural = '-ibus';
 
       nounEndings.third.abl.fem = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.third.abl.fem.singular = '<h4 class="endingsButton">-e</h4>';
-        nounEndings.third.abl.fem.plural = '<h4 class="endingsButton">-ibus</h4>';
+        nounEndings.third.abl.fem.singular = '-e';
+        nounEndings.third.abl.fem.plural = '-ibus';
 
       nounEndings.third.abl.neuter = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.third.abl.neuter.singular = '<h4 class="endingsButton">-e</h4>';
-        nounEndings.third.abl.neuter.plural = '<h4 class="endingsButton">-ibus</h4>';
+        nounEndings.third.abl.neuter.singular = '-e';
+        nounEndings.third.abl.neuter.plural = '-ibus';
 
 
 
   nounEndings.fourth = {} /*'<button class="endingsButton" id="1">nominative</button><button class="endingsButton" id="2">Genative</button><button class="endingsButton" id="3">Dative</button><button class="endingsButton" id="4">Accusative</button><button class="endingsButton" id="5">Ablative</button>'*/;
     nounEndings.fourth.nom = {} /*'<button class="endingsButton" id="1">Masculine</button><button class="endingsButton" id="2">Feminine</button><button class="endingsButton" id="3">neuter</button>'*/;
       nounEndings.fourth.nom.masc = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fourth.nom.masc.singular = '<h4 class="endingsButton">-us</h4>';
-        nounEndings.fourth.nom.masc.plural = '<h4 class="endingsButton">-ūs</h4>';
+        nounEndings.fourth.nom.masc.singular = '-us';
+        nounEndings.fourth.nom.masc.plural = '-ūs';
 
       nounEndings.fourth.nom.fem = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fourth.nom.fem.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.fourth.nom.fem.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.fourth.nom.fem.singular = '-us';
+        nounEndings.fourth.nom.fem.plural = '-ūs';
 
       nounEndings.fourth.nom.neuter = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fourth.nom.neuter.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.fourth.nom.neuter.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.fourth.nom.neuter.singular = '-ū';
+        nounEndings.fourth.nom.neuter.plural = '-ua';
 
 
     nounEndings.fourth.gen = {} /*'<button class="endingsButton" id="1">Masculine</button><button class="endingsButton" id="2">Feminine</button><button class="endingsButton" id="3">neuter</button>'*/;
       nounEndings.fourth.gen.masc = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fourth.gen.masc.singular = '<h4 class="endingsButton">-ūs</h4>';
-        nounEndings.fourth.gen.masc.plural = '<h4 class="endingsButton">-uum</h4>';
+        nounEndings.fourth.gen.masc.singular = '-ūs';
+        nounEndings.fourth.gen.masc.plural = '-uum';
 
       nounEndings.fourth.gen.fem = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fourth.gen.fem.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.fourth.gen.fem.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.fourth.gen.fem.singular = '-ūs';
+        nounEndings.fourth.gen.fem.plural = '-uum';
 
       nounEndings.fourth.gen.neuter = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fourth.gen.neuter.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.fourth.gen.neuter.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.fourth.gen.neuter.singular = '-ūs';
+        nounEndings.fourth.gen.neuter.plural = '-uum';
 
 
     nounEndings.fourth.dat = {} /*'<button class="endingsButton" id="1">Masculine</button><button class="endingsButton" id="2">Feminine</button><button class="endingsButton" id="3">neuter</button>'*/;
       nounEndings.fourth.dat.masc = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fourth.dat.masc.singular = '<h4 class="endingsButton">-uī</h4>';
-        nounEndings.fourth.dat.masc.plural = '<h4 class="endingsButton">ibus</h4>';
+        nounEndings.fourth.dat.masc.singular = '-uī';
+        nounEndings.fourth.dat.masc.plural = 'ibus';
 
       nounEndings.fourth.dat.fem = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fourth.dat.fem.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.fourth.dat.fem.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.fourth.dat.fem.singular = '-uī';
+        nounEndings.fourth.dat.fem.plural = 'ibus';
 
       nounEndings.fourth.dat.neuter = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fourth.dat.neuter.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.fourth.dat.neuter.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.fourth.dat.neuter.singular = '-ū';
+        nounEndings.fourth.dat.neuter.plural = '-ibus';
 
 
     nounEndings.fourth.acc = {} /*'<button class="endingsButton" id="1">Masculine</button><button class="endingsButton" id="2">Feminine</button><button class="endingsButton" id="3">neuter</button>'*/;
       nounEndings.fourth.acc.masc = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fourth.acc.masc.singular = '<h4 class="endingsButton">-um</h4>';
-        nounEndings.fourth.acc.masc.plural = '<h4 class="endingsButton">-ūs</h4>';
+        nounEndings.fourth.acc.masc.singular = '-um';
+        nounEndings.fourth.acc.masc.plural = '-ūs';
 
       nounEndings.fourth.acc.fem = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fourth.acc.fem.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.fourth.acc.fem.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.fourth.acc.fem.singular = '-um';
+        nounEndings.fourth.acc.fem.plural = '-ūs';
 
       nounEndings.fourth.acc.neuter = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fourth.acc.neuter.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.fourth.acc.neuter.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.fourth.acc.neuter.singular = '-ū';
+        nounEndings.fourth.acc.neuter.plural = '-ua';
 
 
     nounEndings.fourth.abl = {} /*'<button class="endingsButton" id="1">Masculine</button><button class="endingsButton" id="2">Feminine</button><button class="endingsButton" id="3">neuter</button>'*/;
       nounEndings.fourth.abl.masc = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fourth.abl.masc.singular = '<h4 class="endingsButton">-ū</h4>';
-        nounEndings.fourth.abl.masc.plural = '<h4 class="endingsButton">-ibus</h4>';
+        nounEndings.fourth.abl.masc.singular = '-ū';
+        nounEndings.fourth.abl.masc.plural = '-ibus';
 
       nounEndings.fourth.abl.fem = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fourth.abl.fem.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.fourth.abl.fem.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.fourth.abl.fem.singular = '-um';
+        nounEndings.fourth.abl.fem.plural = '-ūs';
 
       nounEndings.fourth.abl.neuter = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fourth.abl.neuter.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.fourth.abl.neuter.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.fourth.abl.neuter.singular = '-ū';
+        nounEndings.fourth.abl.neuter.plural = '-ibus';
     
 
 
   nounEndings.fifth = {} /*'<button class="endingsButton" id="1">nominative</button><button class="endingsButton" id="2">Genative</button><button class="endingsButton" id="3">Dative</button><button class="endingsButton" id="4">Accusative</button><button class="endingsButton" id="5">Ablative</button>'*/;
     nounEndings.fifth.nom = {} /*'<button class="endingsButton" id="1">Masculine</button><button class="endingsButton" id="2">Feminine</button><button class="endingsButton" id="3">neuter</button>'*/;
       nounEndings.fifth.nom.masc = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fifth.nom.masc.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.fifth.nom.masc.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.fifth.nom.masc.singular = '-ēs';
+        nounEndings.fifth.nom.masc.plural = '-ēs';
 
       nounEndings.fifth.nom.fem = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fifth.nom.fem.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.fifth.nom.fem.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.fifth.nom.fem.singular = '-ēs';
+        nounEndings.fifth.nom.fem.plural = '-ēs';
 
       nounEndings.fifth.nom.neuter = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fifth.nom.neuter.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.fifth.nom.neuter.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.fifth.nom.neuter.singular = 'N/A';
+        nounEndings.fifth.nom.neuter.plural = 'N/A';
 
 
     nounEndings.fifth.gen = {} /*'<button class="endingsButton" id="1">Masculine</button><button class="endingsButton" id="2">Feminine</button><button class="endingsButton" id="3">neuter</button>'*/;
       nounEndings.fifth.gen.masc = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fifth.gen.masc.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.fifth.gen.masc.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.fifth.gen.masc.singular = '-eī';
+        nounEndings.fifth.gen.masc.plural = '-ērum';
 
       nounEndings.fifth.gen.fem = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fifth.gen.fem.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.fifth.gen.fem.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.fifth.gen.fem.singular = '-eī';
+        nounEndings.fifth.gen.fem.plural = '-ērum';
 
       nounEndings.fifth.gen.neuter = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fifth.gen.neuter.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.fifth.gen.neuter.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.fifth.gen.neuter.singular = 'N/A';
+        nounEndings.fifth.gen.neuter.plural = 'N/A';
 
 
     nounEndings.fifth.dat = {} /*'<button class="endingsButton" id="1">Masculine</button><button class="endingsButton" id="2">Feminine</button><button class="endingsButton" id="3">neuter</button>'*/;
       nounEndings.fifth.dat.masc = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fifth.dat.masc.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.fifth.dat.masc.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.fifth.dat.masc.singular = '-eī';
+        nounEndings.fifth.dat.masc.plural = '-ēbus';
 
       nounEndings.fifth.dat.fem = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fifth.dat.fem.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.fifth.dat.fem.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.fifth.dat.fem.singular = '-eī';
+        nounEndings.fifth.dat.fem.plural = '-ēbus';
 
       nounEndings.fifth.dat.neuter = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fifth.dat.neuter.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.fifth.dat.neuter.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.fifth.dat.neuter.singular = 'N/A';
+        nounEndings.fifth.dat.neuter.plural = 'N/A';
 
 
     nounEndings.fifth.acc = {} /*'<button class="endingsButton" id="1">Masculine</button><button class="endingsButton" id="2">Feminine</button><button class="endingsButton" id="3">neuter</button>'*/;
       nounEndings.fifth.acc.masc = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fifth.acc.masc.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.fifth.acc.masc.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.fifth.acc.masc.singular = '-em';
+        nounEndings.fifth.acc.masc.plural = '-ēs';
 
       nounEndings.fifth.acc.fem = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fifth.acc.fem.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.fifth.acc.fem.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.fifth.acc.fem.singular = '-em';
+        nounEndings.fifth.acc.fem.plural = '-ēs';
 
       nounEndings.fifth.acc.neuter = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fifth.acc.neuter.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.fifth.acc.neuter.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.fifth.acc.neuter.singular = 'N/A';
+        nounEndings.fifth.acc.neuter.plural = 'N/A';
 
 
     nounEndings.fifth.abl = {} /*'<button class="endingsButton" id="1">Masculine</button><button class="endingsButton" id="2">Feminine</button><button class="endingsButton" id="3">neuter</button>'*/;
       nounEndings.fifth.abl.masc = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fifth.abl.masc.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.fifth.abl.masc.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.fifth.abl.masc.singular = '-ē';
+        nounEndings.fifth.abl.masc.plural = '-ēbus';
 
       nounEndings.fifth.abl.fem = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fifth.abl.fem.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.fifth.abl.fem.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.fifth.abl.fem.singular = '-ē';
+        nounEndings.fifth.abl.fem.plural = '-ēbus';
 
       nounEndings.fifth.abl.neuter = {} /*'<button class="endingsButton" id="1">Singular</button><button class="endingsButton" id="2">Plural</button>'*/;
-        nounEndings.fifth.abl.neuter.singular = '<h4 class="endingsButton"></h4>';
-        nounEndings.fifth.abl.neuter.plural = '<h4 class="endingsButton"></h4>';
+        nounEndings.fifth.abl.neuter.singular = 'N/A';
+        nounEndings.fifth.abl.neuter.plural = 'N/A';
 }
 
 function nounChart() {
   pagestate = 3;
-  chrome.tabs.create({url: 'NounChart.html'});
-  // have it list the children of the current object as buttons 
+  // chrome.tabs.create({url: 'NounChart.html'});
+
+  // destroys current ui
+  document.getElementById("buttons").innerHTML = '';
+
+  // sets i to 1 so it can be used to get iterations in .map
+  let i = 1;
+
+  Object.keys(nounEndings).map(buttontitle => {
+    document.getElementById("buttons").innerHTML += '<button id="' + i + '" class="endingsButton">' + buttontitle +'</button>';
+    i += 1;
+  });
   if (nounchartlistenerinit == 0) {
     // init buttonlisteners
   }
@@ -530,22 +540,32 @@ function feedback() {
   dictionarylistenerinit = 1;
 }
 
+function clear() {
+  // clears UI
+  document.getElementById("buttons").innerHTML = '';
+
+  // sets a new tip if the previous page set a unique tip 
+  if (pagestate == 2) {
+    tip();
+  }
+}
+
 // Initialises the navbar buttons
 function nav() {
-  document.getElementById("macronizerbutton").addEventListener("click", () => macronizer());
-  document.addEventListener("keydown", (e) => {/*console.log(e.key);*/ if (e.key == 'm' && pagestate != 2) {macronizer()}});
+  document.getElementById("macronizerbutton").addEventListener("click", () => {clear(); macronizer();});
+  document.addEventListener("keydown", (e) => {/*console.log(e.key);*/ if (e.key == 'm' && pagestate != 2) {clear(); macronizer();}});
 
-  document.getElementById("dictionarybutton").addEventListener("click", () => dictionary());
-  document.addEventListener("keydown", (e) => {/*console.log(e.key);*/ if (e.key == 'd' && pagestate != 2) {dictionary()}});
+  document.getElementById("dictionarybutton").addEventListener("click", () => {clear(); dictionary();});
+  document.addEventListener("keydown", (e) => {/*console.log(e.key);*/ if (e.key == 'd' && pagestate != 2) {clear(); dictionary();}});
 
-  document.getElementById('nounendingsbutton').addEventListener("click", () => {nounChart()});
-  document.addEventListener("keydown", (e) => {/*console.log(e.key);*/ if (e.key == 'n' && pagestate != 2) {nounChart()}});
+  document.getElementById('nounendingsbutton').addEventListener("click", () => {clear(); nounChart();});
+  document.addEventListener("keydown", (e) => {/*console.log(e.key);*/ if (e.key == 'n' && pagestate != 2) {clear(); nounChart();}});
 
-  document.getElementById('verbendingsbutton').addEventListener("click", () => {verbEndings()});
-  document.addEventListener("keydown", (e) => {/*console.log(e.key);*/ if (e.key == 'v' && pagestate != 2) {verbEndings()}});
+  document.getElementById('verbendingsbutton').addEventListener("click", () => {clear(); verbEndings();});
+  document.addEventListener("keydown", (e) => {/*console.log(e.key);*/ if (e.key == 'v' && pagestate != 2) {clear(); verbEndings();}});
 
-  document.getElementById('feedbackbutton').addEventListener("click", () => {feedback()});
-  document.addEventListener("keydown", (e) => {/*console.log(e.key);*/ if (e.key == 'f' && pagestate != 2) {feedback()}});
+  document.getElementById('feedbackbutton').addEventListener("click", () => {clear(); feedback();});
+  document.addEventListener("keydown", (e) => {/*console.log(e.key);*/ if (e.key == 'f' && pagestate != 2) {clear(); feedback();}});
 }
 
 // ------ CALLS FUNCTIONS TO INITIALIZE UI ------
