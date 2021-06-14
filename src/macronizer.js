@@ -53,6 +53,7 @@ function tip(tip) {
     text = tips[i];
   } else {
     text = tip;
+    i = 0;
   } 
   document.getElementById("tip").innerHTML = text;
 
@@ -500,22 +501,54 @@ var nounEndings = {} /*'<button class="endingsButton" id="1">1st Declension</but
         nounEndings.fifth.abl.neuter.plural = 'N/A';
 }
 
+function nounChartInit() {
+  document.getElementById("nounEndingsButton1").addEventListener("click", () => {endingsButtonPress(1);});
+  document.getElementById("nounEndingsButton2").addEventListener("click", () => {endingsButtonPress(2);});
+  document.getElementById("nounEndingsButton3").addEventListener("click", () => {endingsButtonPress(3);});
+  document.getElementById("nounEndingsButton4").addEventListener("click", () => {endingsButtonPress(4);});
+  document.getElementById("nounEndingsButton5").addEventListener("click", () => {endingsButtonPress(5);});
+}
+
+var nounEndingsActive = nounEndings;
+
+function endingsButtonPress(num) {
+  nounEndingsActive = Object.values(nounEndingsActive)[num - 1];
+  console.log(nounEndingsActive);
+
+  // sets i to 1 so it can be used to get iterations in .map
+  let i = 1;
+
+  if (Object.values(nounEndingsActive)[0] != '-') {
+    // destroys current ui
+    document.getElementById("buttons").innerHTML = '';
+
+    Object.keys(nounEndingsActive).map(buttontitle => {
+      document.getElementById("buttons").innerHTML += '<button id="nounEndingsButton' + i + '" class="endingsButton">' + buttontitle +'</button>';
+      i += 1;
+    });
+  } else {
+    document.getElementById("buttons").innerHTML = '<div class="nounEndingContainer"><h4 class="nounEnding">' + nounEndingsActive +'</h4></div>';
+  }
+
+  nounChartInit();
+}
+
 function nounChart() {
   pagestate = 3;
-  // chrome.tabs.create({url: 'NounChart.html'});
-
-  // destroys current ui
-  document.getElementById("buttons").innerHTML = '';
+  // chrome.tabs.create({url: 'NounChart.html'});\
+  
+  nounEndingsActive = nounEndings;
 
   // sets i to 1 so it can be used to get iterations in .map
   let i = 1;
 
   Object.keys(nounEndings).map(buttontitle => {
-    document.getElementById("buttons").innerHTML += '<button id="' + i + '" class="endingsButton">' + buttontitle +'</button>';
+    document.getElementById("buttons").innerHTML += '<button id="nounEndingsButton' + i + '" class="endingsButton">' + buttontitle +'</button>';
     i += 1;
   });
   if (nounchartlistenerinit == 0) {
     // init buttonlisteners
+      nounChartInit();
   }
   nounchartlistenerinit = 1;
 }
