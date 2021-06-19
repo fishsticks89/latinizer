@@ -16,7 +16,7 @@ var feedbacklistenerinit = 0;
 var pagestate = 1;
 var i;
 
-// ------- FUNTIONS TO COMMUNICATE WITH BACKGROUND.JS ------
+//*FUNCTIONS TO COMMUNICATE WITH BACKGROUND.JS*
 
 // forwards keypress to background.js when the buttons are pressed
 function macronize(char, code) {
@@ -38,14 +38,14 @@ function clipboard(code) {
   setTimeout(() => { window.close(); }, 1000);
 }
 
-// ------ USEFUL FUNCTIONS ------
+//*USEFUL FUNCTIONS*
 
 // Random # from range 
 function random(mn, mx) { 
   return Math.random() * (mx - mn) + mn;
 } 
 
-// ------ FUNCTIONS TO INITIALIZE UI ------
+//*FUNCTIONS TO INITIALIZE UI*
 
 function tip(tip) {
   i = parseInt(random(0, tips.length));
@@ -546,11 +546,9 @@ function nounChart() {
     document.getElementById("buttons").innerHTML += '<button id="nounEndingsButton' + i + '" class="endingsButton">' + buttontitle +'</button>';
     i += 1;
   });
-  if (nounchartlistenerinit == 0) {
-    // init buttonlisteners
-      nounChartInit();
-  }
-  nounchartlistenerinit = 1;
+
+  // init buttonlisteners
+  nounChartInit();
 }
 
 function verbEndings() {
@@ -601,7 +599,7 @@ function nav() {
   document.addEventListener("keydown", (e) => {/*console.log(e.key);*/ if (e.key == 'f' && pagestate != 2) {clear(); feedback();}});
 }
 
-// ------ CALLS FUNCTIONS TO INITIALIZE UI ------
+//*CALLS FUNCTIONS TO INITIALIZE UI*
 
 // calls nav to initiate the navbar buttons
 nav();
