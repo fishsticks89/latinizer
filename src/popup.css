@@ -14,21 +14,24 @@ body {
     margin-top: -0rem;
     display: flex;
     align-items: center;
-    width: 100%;
 }
 
 .macronbutton {
     height: 4pc;
     width: 4pc;
-    /*background-color: rgb(0, 193, 252);*/
-    background: linear-gradient(145deg, rgb(0, 155, 202), #8fe3ff);
-    border-radius: 50%;
+    background-color: rgb(0, 193, 252);
+    border-radius: 2pc;
     color: white;
     border: none;
     font-size: medium;
     box-shadow: 0px 0px 20px hsl(194, 80%, 60%);
     margin: 1pc;
     font-family: Roboto;
+}
+
+.macronbutton:focus {
+    background-color: rgb(0, 155, 202);
+    outline: none;
 }
 
 #nav {
