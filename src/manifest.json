@@ -24,11 +24,11 @@
       ],
 
     "commands": {
-      "_execute_browser_action": {
+      "_execute_action": {
         "suggested_key": {
-          "default": "Ctrl+Shift+D",
-          "windows": "Ctrl+Shift+D",
-          "mac": "Ctrl+Shift+D"
+          "default": "Alt+M",
+          "windows": "Alt+M",
+          "mac": "Alt+M"
         },
         "description": "Activate the extention"
       }

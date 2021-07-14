@@ -119,7 +119,7 @@ function dictionary() {
     // init buttonlisteners
     document.getElementById("to Latin").addEventListener("click", () => {
       document.getElementById("buttons").innerHTML = '<iframe id="whit" src="https://archives.nd.edu/cgi-bin/wordz.pl?english=' + document.getElementById("dictionaryFormField").value + '"></iframe>';
-      dictionarylistenerinit = 0;
+      dictionarylistenerinit = 0; 
       whitstyle();
     });
     
@@ -128,15 +128,18 @@ function dictionary() {
       dictionarylistenerinit = 0;
       whitstyle();
     });
+
+    document.getElementById('whit').onload = () => {console.log('loaded')};
+
   }
   dictionarylistenerinit = 1;
 }
 
 function whitstyle() {
-  document.getElementById('whit').contentDocument.body.innerHTML + document.getElementById('whit').contentDocument.body.innerHTML + '<link rel="stylesheet" href="popup.css" />';
+  // document.getElementById('whit').contentDocument.body.innerHTML + document.getElementById('whit').contentDocument.body.innerHTML + '<link rel="stylesheet" href="popup.css" />';
   setTimeout(() => {
-    console.log(document.getElementById('whit')/* do .substring or another way to only get whats in the body of the html, then overwrite the iframe with it */);
-  }, 10);
+    console.log(document.getElementById('whit').substring(1, 3) /* do .substring or another way to only get whats in the body of the html, then overwrite the iframe with it */);
+  }, 200);
 }
 
 // massive javascript object with all the endings
@@ -526,8 +529,10 @@ function endingsButtonPress(num) {
       document.getElementById("buttons").innerHTML += '<button id="nounEndingsButton' + i + '" class="endingsButton">' + buttontitle +'</button>';
       i += 1;
     });
-  } else {
+  } else if (nounEndingsActive != '') {
     document.getElementById("buttons").innerHTML = '<div class="nounEndingContainer"><h4 class="nounEnding">' + nounEndingsActive +'</h4></div>';
+  } else {
+    document.getElementById("buttons").innerHTML = '<div class="nounEndingContainer"><h4 class="nounEnding">' + 'var' +'</h4></div>';
   }
 
   nounChartInit();
@@ -550,7 +555,12 @@ function nounChart() {
   // init buttonlisteners
   nounChartInit();
 }
-
+if (true) {
+  var verbendings = {
+    active: {},
+    passive: "passive endings are not yet supported"
+  }
+}
 function verbEndings() {
   pagestate = 4;
   chrome.tabs.create({url: 'ActiveVerbEndings.html'});
