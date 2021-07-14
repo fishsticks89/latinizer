@@ -11,8 +11,3 @@ chrome.runtime.onMessage.addListener(
         setTimeout(() => { sendkey(iden) }, 80);
     }
 );
-
-// open popup:
-chrome.commands.onCommand.addListener(function(command) {
-    console.log('Command:', command);
-});
