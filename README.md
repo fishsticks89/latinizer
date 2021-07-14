@@ -3,7 +3,7 @@ A macron keyboard for Latin students (work in progress)
 
 This can also be used as a template for other types of keyboards! just modify the arrays in *macronizer.js,* and delete unnecessary code!
 
-**Note:** I apologize for any mispellings of the word *character* throughout this code. (not reccomended until latinizer has a stable release)
+**Note:** I apologize for any mispellings of the word *character* throughout this code.
 
 # How to install beta in 10 easy steps! (limited funtionality):
 You must
