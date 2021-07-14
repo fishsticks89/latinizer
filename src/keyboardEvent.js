@@ -48,8 +48,8 @@ function insertAtCarat(myField, myValue) {
 
 function sendstroke(code) {
     console.log('active: ' + document.activeElement);
-    // DO: if active element has no text field, reopen the popup and send it a message to copy the char to clipboard
 
+    // DO: if active element has no text field, reopen the popup and send it a message to copy the char to clipboard
 
     //try1
     /*
@@ -79,10 +79,21 @@ function sendstroke(code) {
     // makes charcode string
     var charcodeParsed = parseInt(String(code));
     
-    // for docs:
-    if (document.URL.includes("https://docs.google.com")) {
-        console.log("docing");
-        const input = document.querySelector(".docs-texteventtarget-iframe").contentDocument.activeElement;
+    // for non html forms
+    if (document.activeElement.value == undefined) {
+        console.log("you have no value");
+        const input = document.activeElement;
+        const eventObj = document.createEvent("Event");
+        eventObj.initEvent("keypress", true, true);
+        eventObj.keyCode = charcodeParsed;
+        input.dispatchEvent(eventObj);
+        console.log("code: " + charcodeParsed);
+    }
+
+    // for docs
+    if (document.activeElement.nodeName == 'IFRAME') {
+        console.log("who framed roger rabbit");
+        const input = document.activeElement.contentDocument.activeElement;
         const eventObj = document.createEvent("Event");
         eventObj.initEvent("keypress", true, true);
         eventObj.keyCode = charcodeParsed;
