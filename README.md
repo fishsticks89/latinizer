@@ -59,7 +59,7 @@ You must
 
 
 
-10. Click on the exentions button
+10. Click on the extentions button
 
 ![image](https://user-images.githubusercontent.com/61331006/118347543-06456680-b4f9-11eb-9e20-a7e20897e65f.png)
 
