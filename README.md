@@ -3,7 +3,17 @@ A macron keyboard for Latin students (work in progress)
 
 This can also be used as a template for other types of keyboards! just modify the arrays in *macronizer.js,* and delete unnecessary code! (not reccomended until Latinizer has a stable release)
 
-**Note:** I apologize for any mispellings of the word *character* throughout this code.
+**Note:** I apologize for any mispellings of the word *character* throughout the codebase.
+
+# What Latinizer Does
+
+While Latinizer is, first and foremost, a macron keyboard, it also has a few other functions:
+
+Noun/Verb endings:
+Latinizer provides an easy interface for searching for endings (verb endings not yet implemented)
+
+Dictionary:
+Latinizer has integration with Whitaker's words for easy dictionary use
 
 # How to install beta in 10 easy steps! (limited funtionality):
 You must
