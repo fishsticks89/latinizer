@@ -8,6 +8,7 @@ var tipsinit = 0;
 // these tell whether or not the button listeners for that part of the extention are initialized
 var macronlistenerinit = 0;
 var dictionarylistenerinit = 0;
+var whitlistenersinit = 0;
 var nounchartlistenerinit = 0;
 var verbendingslistenerinit = 0;
 var feedbacklistenerinit = 0;
@@ -118,28 +119,28 @@ function dictionary() {
   if (dictionarylistenerinit == 0) {
     // init buttonlisteners
     document.getElementById("to Latin").addEventListener("click", () => {
-      document.getElementById("buttons").innerHTML = '<iframe id="whit" src="https://archives.nd.edu/cgi-bin/wordz.pl?english=' + document.getElementById("dictionaryFormField").value + '"></iframe>';
+      document.getElementById("buttons").innerHTML = '<iframe id="whit" src="https://archives.nd.edu/cgi-bin/wordz.pl?english=' + document.getElementById("dictionaryFormField").value + '"></iframe><button class="backButton" id="dictionaryButton>back</button>';
       dictionarylistenerinit = 0; 
-      whitstyle();
+      whitinit();
     });
     
     document.getElementById("to English").addEventListener("click", () => {
-      document.getElementById("buttons").innerHTML = '<iframe id="whit" src="https://archives.nd.edu/cgi-bin/wordz.pl?keyword=' + document.getElementById("dictionaryFormField").value + '"></iframe>';
+      document.getElementById("buttons").innerHTML = '<iframe id="whit" src="https://archives.nd.edu/cgi-bin/wordz.pl?keyword=' + document.getElementById("dictionaryFormField").value + '"></iframe><button class="backButton" id="dictionaryButton>back</button>';
       dictionarylistenerinit = 0;
-      whitstyle();
+      whitinit();
     });
-
-    document.getElementById('whit').onload = () => {console.log('loaded')};
 
   }
   dictionarylistenerinit = 1;
 }
 
-function whitstyle() {
+function whitinit() {
   // document.getElementById('whit').contentDocument.body.innerHTML + document.getElementById('whit').contentDocument.body.innerHTML + '<link rel="stylesheet" href="popup.css" />';
-  setTimeout(() => {
-    console.log(document.getElementById('whit').substring(1, 3) /* do .substring or another way to only get whats in the body of the html, then overwrite the iframe with it */);
-  }, 200);
+  if (whitlistenersinit == 0) {
+    document.getElementById('whit').onload = () => {console.log('loaded')};
+    console.log(document.getElementById('whit').contentWindow.document.body.innerHTML /* do .substring or another way to only get whats in the body of the html, then overwrite the iframe with it */);
+    whitlistenersinit = 1;
+  }
 }
 
 // massive javascript object with all the endings
