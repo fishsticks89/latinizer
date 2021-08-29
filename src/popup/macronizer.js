@@ -564,7 +564,7 @@ if (true) {
 }
 function verbEndings() {
   pagestate = 4;
-  chrome.tabs.create({url: 'ActiveVerbEndings.html'});
+  chrome.tabs.create({url: 'assets/ActiveVerbEndings.html'});
 
   if (verbendingslistenerinit == 0) {
     // init buttonlisteners
@@ -610,7 +610,7 @@ function nav() {
   document.addEventListener("keydown", (e) => {/*console.log(e.key);*/ if (e.key == 'f' && pagestate != 2) {clear(); feedback();}});
 }
 
-//*CALLS FUNCTIONS TO INITIALIZE UI*
+// *CALLS FUNCTIONS TO INITIALIZE UI*
 
 // calls nav to initiate the navbar buttons
 nav();

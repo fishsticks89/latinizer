@@ -5,12 +5,12 @@
     "manifest_version": 3,
 
     "action": {
-      "default_popup": "popup.html",
+      "default_popup": "./popup/popup.html",
       "default_icon": {
-        "16": "/logo/logo_16.png",
-        "32": "/logo/logo_32.png",
-        "64": "/logo/logo_64.png",
-        "128": "/logo/logo_128.png"
+        "16": "./assets/logo/logo_16.png",
+        "32": "./assets/logo/logo_32.png",
+        "64": "./assets/logo/logo_64.png",
+        "128": "./assets/logo/logo_128.png"
       }
     },
 
@@ -18,7 +18,7 @@
         {
           "matches": ["<all_urls>"],
           "js": [
-            "keyboardEvent.js"
+            "./inject/keyboardEvent.js"
           ]
         }
       ],
@@ -35,7 +35,7 @@
     },
 
     "background": {
-      "service_worker": "background.js"
+      "service_worker": "./background/background.js"
     },
 
     "permissions": [

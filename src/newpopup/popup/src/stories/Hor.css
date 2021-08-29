@@ -1,0 +1,14 @@
+.hor{
+  justify-content: center;
+  text-align: center;
+  height: 20px;
+  border-radius: 10px;
+  width: 90%;
+  margin-left: 5%;
+  border: none;
+  color: rgb(95, 95, 95);
+
+  background: #e0e0e0;
+  box-shadow:  6px 6px 12px #bebebe,
+              -6px -6px 12px #ffffff;
+}
