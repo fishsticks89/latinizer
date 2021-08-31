@@ -1,4 +1,4 @@
-{
+nounEndings = {
     "first": {
         "nom": {
             "singular": "-a",
@@ -22,74 +22,70 @@
         }
     },
     "second": {
-        "nom": {
-            "masc": {
+        "masc": {
+            "nom": {
                 "singular": "-us",
-                "plural": "-ī"
+                "plural": "ī"
             },
-            "fem": {
-                "singular": "-us",
-                "plural": "-ī"
+            "gen": {
+                "singular": "ī",
+                "plural": "ōrum"
             },
-            "neuter": {
-                "singular": "-um",
-                "plural": "-a"
+            "dat": {
+                "singular": "ō",
+                "plural": "īs"
+            },
+            "acc": {
+                "singular": "um",
+                "plural": "ōs"
+            },
+            "abl": {
+                "singular": "ō",
+                "plural": "īs"
             }
         },
-        "gen": {
-            "masc": {
-                "singular": "-ī",
-                "plural": "-ōrum"
+        "neuter": {
+            "nom": {
+                "singular": "",
+                "plural": ""
             },
-            "fem": {
-                "singular": "-ī",
-                "plural": "-ōrum"
+            "gen": {
+                "singular": "",
+                "plural": ""
             },
-            "neuter": {
-                "singular": "-ī",
-                "plural": "-ōrum"
+            "dat": {
+                "singular": "",
+                "plural": ""
+            },
+            "acc": {
+                "singular": "",
+                "plural": ""
+            },
+            "abl": {
+                "singular": "",
+                "plural": ""
             }
         },
-        "dat": {
-            "masc": {
-                "singular": "-ō",
-                "plural": "-īs"
+        "fem": {
+            "nom": {
+                "singular": "",
+                "plural": ""
             },
-            "fem": {
-                "singular": "-ō",
-                "plural": "-īs"
+            "gen": {
+                "singular": "",
+                "plural": ""
             },
-            "neuter": {
-                "singular": "-ō",
-                "plural": "-īs"
-            }
-        },
-        "acc": {
-            "masc": {
-                "singular": "-um",
-                "plural": "-ōs"
+            "dat": {
+                "singular": "",
+                "plural": ""
             },
-            "fem": {
-                "singular": "-um",
-                "plural": "-ōs"
+            "acc": {
+                "singular": "",
+                "plural": ""
             },
-            "neuter": {
-                "singular": "-um",
-                "plural": "-a"
-            }
-        },
-        "abl": {
-            "masc": {
-                "singular": "-ō",
-                "plural": "-īs"
-            },
-            "fem": {
-                "singular": "-ō",
-                "plural": "-īs"
-            },
-            "neuter": {
-                "singular": "-ō",
-                "plural": "-īs"
+            "abl": {
+                "singular": "",
+                "plural": ""
             }
         }
     },
@@ -310,3 +306,5 @@
         }
     }
 }
+
+export default nounEndings;
