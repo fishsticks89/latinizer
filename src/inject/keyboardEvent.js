@@ -129,7 +129,7 @@ function sendstroke(code, char) {
     }
 
     // for div
-    if (document.activeElement.tagName != 'IFRAME') {
+    if (document.activeElement.getAttribute("contentEditable") == 'true' && document.activeElement.tagName != 'IFRAME') {
         console.log("divide and conquor");
         const input = document.activeElement;
         // input.innerHTML = input.innerHTML + charcodeParsed
