@@ -2,12 +2,12 @@
     justify-content: center;
     text-align: center;
     height: 30px;
-    width: 80px;
     border: none;
     border-radius: 15px;
     color: rgb(95, 95, 95);
     font-family: Arial, sans-serif;
     font-size: medium;
+    width: 25%;
 
     background: #e0e0e0;
     box-shadow:  6px 6px 12px #bebebe,

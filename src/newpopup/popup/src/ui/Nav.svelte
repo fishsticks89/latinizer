@@ -1,13 +1,15 @@
 <script>
   import './Nav.css'
-  export let label = 'sdfg'
+  export let label = ''
 </script>
 
 <div
   class={'nav'}
 >
   <slot/>
-  <p>
-    {label}
-  </p>
+  {#if label != ''}
+    <p>
+      {label}
+    </p>
+  {/if}
 </div>

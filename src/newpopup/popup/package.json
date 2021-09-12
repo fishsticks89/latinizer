@@ -17,7 +17,7 @@
     "dev": "rollup -c -w",
     "start": "sirv public",
     "test": "jest --watchAll",
-    "story": "start-storybook -p 6006 -s public",
+    "stories": "start-storybook -p 6006 -s public",
     "build-storybook": "build-storybook -s public"
   },
   "devDependencies": {

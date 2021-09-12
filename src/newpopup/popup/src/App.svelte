@@ -1,29 +1,37 @@
 <script>
+	  import Macrons from "./pages/Macrons.svelte";
+	  import Dictionary from "./pages/Dictionary.svelte";
+	  import Nav from "./pages/Nav.svelte";
+	  import Tip from "./pages/Tip.svelte";
+	  import Hor from "./ui/Hor.svelte";
+	  import Form from "./ui/Form.svelte";
+	  import Button from "./ui/Button.svelte";
+	  import Small from "./ui/Button-Small.svelte";
+	  let pagestate = 0;
+	  let pages = ['macronizer', 'dictionary', 'noun endings', 'verb endings', 'feedback']
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<Nav pagestate={(e) => {pagestate = e}} pages={pages}/>
+	<div id='main'>
+		{#if pagestate == 0}
+			<Macrons></Macrons>
+		{:else if pagestate == 1}
+			<Dictionary></Dictionary>
+			<Tip>Powered By Whitaker's Works!</Tip>
+		{:else if pagestate == 2}
+		{:else if pagestate == 3}
+
+		{:else if pagestate == 4}
+			
+		{:else}
+			<b>ERROR</b>
+		{/if}
+	</div>
+	{#if pagestate != 1}
+		<Tip tip={true}></Tip>
+	{/if}
 </main>
 
 <style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
 </style>

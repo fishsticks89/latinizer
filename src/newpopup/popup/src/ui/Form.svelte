@@ -5,13 +5,8 @@
 
 <div 
   class={'form'}
->
-  <div
-    class="editable"
-    contenteditable="true"
-    autofill="false"
-    spellcheck="false"
-    bind:textContent={contents}
-  >
-  </div>
-</div>
+  contenteditable="true"
+  autofill="false"
+  spellcheck="false"
+  bind
+/>

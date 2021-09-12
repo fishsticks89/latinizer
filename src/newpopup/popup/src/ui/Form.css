@@ -1,11 +1,15 @@
 .form{
-  height: 30px;
+  height: 22px;
   border-radius: 10px;
-  width: 100%;
   border: none;
   color: rgb(95, 95, 95);
   font-family: Arial, sans-serif;
   font-size: medium;
+  width: 37%;
+
+  padding-left: 10px;
+  padding-right: 10px;
+  padding-top: 6px;
 
   background: #e0e0e0;
   box-shadow:  6px 6px 12px #bebebe,
@@ -16,16 +20,4 @@
   outline: none;
   box-shadow: inset 6px 6px 13px #d0d0d0,
             inset -6px -6px 13px #f0f0f0;
-}
-
-.editable{
-  outline: none;
-  width: 100%;
-  position: relative;
-  left: 11px;
-  top: 6px;
-}
-
-.editable:focus{
-  outline: none;
 }
